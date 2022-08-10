@@ -16,6 +16,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'preservim/vimux'
 " Add plugins here
 
 call vundle#end()
@@ -29,6 +30,8 @@ set shortmess+=I
 " Show line numbers.
 set number
 
+" highlight cursor line (could also do cursorcolumn)
+set cursorline
 " This enables relative line numbering mode. With both number and
 " relativenumber enabled, the current line shows the true line number, while
 " all other lines (above and below) are numbered relative to the current line.
@@ -46,6 +49,21 @@ set laststatus=2
 " This configuration makes backspace behave more reasonably, in that you can
 " backspace over anything.
 set backspace=indent,eol,start
+
+" set shiftwidth to 4 spaces
+set shiftwidth=4
+
+" set tab width to 4 columns
+set tabstop=4
+
+" use space characters instead of tabs
+set expandtab
+
+" don't save backup files
+set nobackup
+
+" don't wrap lines
+set nowrap
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
 " shown in any window) that has unsaved changes. This is to prevent you from "
@@ -92,3 +110,58 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 " set ts=4 sw=4
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 autocmd Filetype make setlocal noexpandtab
+
+
+" show partial command typed
+set showcmd
+
+" show mode in
+set showmode
+
+" show matching words in search
+set showmatch
+
+" highlight when searching
+set hlsearch
+
+" set no. of commands to save in history
+set history=1000
+
+" enable auto-completion menu after TAB press
+set wildmenu
+
+" make wildmenu act like Bash completion
+set wildmode=list:longest
+
+" wildmenu ignore list
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+if &diff
+    syntax off
+endif
+
+colorscheme slate
+
+let mapleader = ","
+
+nnoremap <Leader>a :echo "leader test!"<CR>
+nnoremap <Leader>r ebhpldebye
+nnoremap <Leader>o o<ESC>
+nnoremap <Leader>O O<ESC>
+
+
+function! VimuxSlime()
+    call VimuxRunCommand(@v)
+endfunction
+" If text is selected, save it in the v buffer and send that buffer
+" it to tmux
+vmap <Leader>l "vy :call VimuxSlime()<CR>
+" Select current paragraph and send it to tmux
+nmap <Leader>l vip<Leader>l<CR>
+
+nmap <Leader>k ^v$<Leader>l<CR>
+
