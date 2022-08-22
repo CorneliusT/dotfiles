@@ -17,8 +17,6 @@ Plugin 'flazz/vim-colorschemes'
 
 Plugin 'mnishz/colorscheme-preview.vim'
 
-Plugin 'christoomey/vim-tmux-navigator'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -121,9 +119,6 @@ nmap <Leader>k ^v$<Leader>l<CR>
 
 noremap <Leader>m :call cursor(0, len(getline('.'))/2)<CR>
 
-" https://stackoverflow.com/questions/12282573/save-selected-text-partial-line-from-vim
-vmap <Leader>b y:new tmp_buff.py<CR>VGp:x<CR> :VimuxRunCommand("run -i tmp_buff.py")<CR>
-vmap <Leader>n y:new tmp_save.py<CR>VGp:x<CR>
 " set laststatus=2
 " 
 " 
@@ -149,6 +144,3 @@ vnoremap <nowait> jj <Esc>gV
 onoremap <nowait> jj <Esc>
 cnoremap <nowait> jj <C-C><Esc>
 inoremap <nowait> jj <Esc>`^
-
-" https://superuser.com/questions/581572/insert-single-character-in-vim
-nnoremap <Leader>i i_<Esc>r
