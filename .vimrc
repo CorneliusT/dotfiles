@@ -19,6 +19,9 @@ Plugin 'mnishz/colorscheme-preview.vim'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -152,3 +155,24 @@ inoremap <nowait> jj <Esc>`^
 
 " https://superuser.com/questions/581572/insert-single-character-in-vim
 nnoremap <Leader>i i_<Esc>r
+
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>  
+map g1 :b1<cr>  
+map g2 :b2<cr>  
+map g3 :b3<cr>  
+map g4 :b4<cr>  
+map g5 :b5<cr>  
+
+" Airline settings
+" let g:airline_theme='deus'
+let g:airline_theme='jellybeans'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Set colors
+set t_Co=256
+
+" make buffers hidden rather than closed when switching buffers
+set hidden
