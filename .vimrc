@@ -15,13 +15,17 @@ Plugin 'preservim/vimux'
 
 Plugin 'flazz/vim-colorschemes'
 
-Plugin 'mnishz/colorscheme-preview.vim'
+" Plugin 'mnishz/colorscheme-preview.vim'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'tpope/vim-obsession'
+
+Plugin 'sheerun/vim-polyglot'
+" Plugin 'ghifarit53/tokyonight-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -101,7 +105,13 @@ if &diff
     syntax off
 endif
 
-colorscheme slate
+" colorscheme slate
+" set termguicolors
+" let g:tokyonight_style = 'storm' " available: night, storm
+" let g:tokyonight_enable_italic = 1
+" colorscheme tokyonight
+colorscheme molokai
+
 
 let mapleader = ","
 
@@ -117,6 +127,7 @@ endfunction
 " If text is selected, save it in the v buffer and send that buffer
 " it to tmux
 vmap <Leader>l "vy :call VimuxSlime()<CR>
+vmap <Leader>j "vy :call VimuxSlime()
 " Select current paragraph and send it to tmux
 nmap <Leader>l vip<Leader>l<CR>
 
@@ -128,13 +139,13 @@ noremap <Leader>m :call cursor(0, len(getline('.'))/2)<CR>
 vmap <Leader>b y:new tmp_buff.py<CR>VGp:x<CR> :VimuxRunCommand("run -i tmp_buff.py")<CR>
 vmap <Leader>n y:new tmp_save.py<CR>VGp:x<CR>
 " set laststatus=2
-" 
-" 
+"
+"
 " hi NormalColor guifg=Black guibg=Green ctermbg=46 ctermfg=0
 " hi InsertColor guifg=Black guibg=Cyan ctermbg=51 ctermfg=0
 " hi ReplaceColor guifg=Black guibg=maroon1 ctermbg=165 ctermfg=0
 " hi VisualColor guifg=Black guibg=Orange ctermbg=202 ctermfg=0
-" 
+"
 " set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
 " set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
 " set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
@@ -158,12 +169,12 @@ nnoremap <Leader>i i_<Esc>r
 
 map gn :bn<cr>
 map gp :bp<cr>
-map gd :bd<cr>  
-map g1 :b1<cr>  
-map g2 :b2<cr>  
-map g3 :b3<cr>  
-map g4 :b4<cr>  
-map g5 :b5<cr>  
+" map gd :bd<cr>
+" map g1 :b1<cr>
+" map g2 :b2<cr>
+" map g3 :b3<cr>
+" map g4 :b4<cr>
+" map g5 :b5<cr>
 
 " Airline settings
 " let g:airline_theme='deus'
@@ -171,8 +182,23 @@ let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap g1 <Plug>AirlineSelectTab1
+nmap g2 <Plug>AirlineSelectTab2
+nmap g3 <Plug>AirlineSelectTab3
+nmap g4 <Plug>AirlineSelectTab4
+nmap g5 <Plug>AirlineSelectTab5
+nmap g6 <Plug>AirlineSelectTab6
+nmap g7 <Plug>AirlineSelectTab7
+nmap g8 <Plug>AirlineSelectTab8
+nmap g9 <Plug>AirlineSelectTab9
+nmap g0 <Plug>AirlineSelectTab0
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 " Set colors
-set t_Co=256
+" set t_Co=256
 
 " make buffers hidden rather than closed when switching buffers
 set hidden
+ 
+set term=screen-256color
